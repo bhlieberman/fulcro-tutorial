@@ -2,9 +2,10 @@
   (:require
    [com.fulcrologic.fulcro.application :as app]
    [com.fulcrologic.fulcro.components :as comp :refer [defsc]]
-   [com.fulcrologic.fulcro.dom :as dom]))
+   [com.fulcrologic.fulcro.dom :as dom]
+   [com.fulcrologic.fulcro.networking.http-remote :as http]))
 
-(defonce app (app/fulcro-app))
+(defonce app (app/fulcro-app {:remotes {:sample (http/fulcro-http-remote {})}}))
 
 (defsc Book [this {:book/keys [id title] :as props}]
   {:ident :book/id
